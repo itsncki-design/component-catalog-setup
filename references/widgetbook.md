@@ -202,15 +202,8 @@ alternative with built-in team access and Figma review features.
 
 ## Known pitfalls
 
-- **Name collision**: forgetting step 2 causes a confusing "widgetbook depends on
--   itself" pub error.
--   - **Generator finds nothing**: use-cases must be inside the widgetbook app's lib/,
-    -   not the main app, and the file must import widgetbook_annotation.
-    -   - **Missing main.directories.g.dart**: the entry point won't compile until
-        -   build_runner has run once. Run the generator before the first flutter run.
-        -   - **Monorepos (melos)**: put the widgetbook app alongside the other packages and path-
-            -   depend on the design-system package, not the app shell.
-            -   - **App widgets that require providers** (Riverpod/Bloc/Inherited widgets): wrap the
-                -   use-case in the minimal provider with fake data, or skip the component for the seed
-                -     set. Never boot the app's real dependency injection in the catalog.
-                - 
+- **Name collision**: forgetting step 2 causes a confusing "widgetbook depends on itself" pub error.
+- **Generator finds nothing**: use-cases must be inside the widgetbook app's lib/, not the main app, and the file must import widgetbook_annotation.
+- **Missing main.directories.g.dart**: the entry point won't compile until build_runner has run once. Run the generator before the first flutter run.
+- **Monorepos (melos)**: put the widgetbook app alongside the other packages and path-depend on the design-system package, not the app shell.
+- **App widgets that require providers** (Riverpod/Bloc/Inherited widgets): wrap the use-case in the minimal provider with fake data, or skip the component for the seed set. Never boot the app's real dependency injection in the catalog.
